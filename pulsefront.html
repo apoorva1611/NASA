@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PulseGuard AI - Blood Pressure Prediction</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f2f7ff;
+    text-align: center;
+}
+
+.container{
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+h1{
+    color: #2a6fdb;
+}
+
+input{
+    width: 90%;
+    padding: 8px;
+    margin: 8px;
+}
+
+button{
+    padding: 10px 20px;
+    background: #2a6fdb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.result{
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>PulseGuard AI</h1>
+<h3>Blood Pressure Prediction System</h3>
+
+<input type="number" id="age" placeholder="Enter Age"><br>
+<input type="number" id="weight" placeholder="Enter Weight (kg)"><br>
+<input type="number" id="heartrate" placeholder="Heart Rate (bpm)"><br>
+<input type="number" id="cholesterol" placeholder="Cholesterol Level"><br>
+
+<button onclick="predictBP()">Predict BP</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function predictBP(){
+
+let age = document.getElementById("age").value;
+let weight = document.getElementById("weight").value;
+let hr = document.getElementById("heartrate").value;
+let chol = document.getElementById("cholesterol").value;
+
+let score = (age*0.2) + (weight*0.1) + (hr*0.3) + (chol*0.2);
+
+let resultText="";
+
+if(score < 50)
+resultText="Normal Blood Pressure";
+else if(score < 80)
+resultText="Pre-Hypertension";
+else
+resultText="High Blood Pressure";
+
+document.getElementById("result").innerHTML =
+"Prediction Result: " + resultText;
+
+}
+
+</script>
+
+</body>
+</html>

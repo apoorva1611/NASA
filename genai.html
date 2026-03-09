@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PULSE Guard AI – Blood Pressure Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+      color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🩺 PULSE Guard AI</h1>
+    <p>Enter your details to predict systolic blood pressure.</p>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" min="18" max="100" value="30">
+
+    <label for="weight">Weight (kg)</label>
+    <input type="number" id="weight" min="40" max="150" value="70">
+
+    <label for="heartRate">Heart Rate (bpm)</label>
+    <input type="number" id="heartRate" min="40" max="180" value="75">
+
+    <label for="activity">Activity Level</label>
+    <select id="activity">
+      <option value="0">Low</option>
+      <option value="1">Moderate</option>
+      <option value="2">High</option>
+    </select>
+
+    <button onclick="predictBP()">Predict Blood Pressure</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function predictBP() {
+      const age = parseInt(document.getElementById('age').value);
+      const weight = parseInt(document.getElementById('weight').value);
+      const heartRate = parseInt(document.getElementById('heartRate').value);
+      const activity = parseInt(document.getElementById('activity').value);
+
+      // Simple demo formula (not medical!)
+      const predictedBP = 120 + 0.2*age + 0.3*weight + 0.5*heartRate - 5*activity;
+
+      document.getElementById('result').innerText =
+        "Predicted Systolic BP: " + predictedBP.toFixed(1) + " mmHg";
+    }
+  </script>
+</body>
+</html>
